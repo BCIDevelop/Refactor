@@ -42,7 +42,7 @@ export const submitHandler = function(e){
       setTimeout(() => { error.remove(); }, 1500);
       return;
     }
-    const newContact = { id: Date.now(), name: name, phone: phone };
+    const newContact = { id: Date.now(), name, phone };
     contacts.push(newContact);
     localStorage.setItem('contacts', JSON.stringify(contacts));
     contactList.innerHTML = '';
