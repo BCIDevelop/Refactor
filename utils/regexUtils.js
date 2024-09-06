@@ -12,7 +12,7 @@ export const testInputs = function(name,phone){
         nameError.textContent = 'Name should contain only letters.';
         document.getElementById('name').insertAdjacentElement('afterend', nameError);
         setTimeout(function () { nameError.remove(); }, 1500);
-        return;
+        return false;
       }
 
       if (!/^[0-9]+$/.test(phone)) {
@@ -21,7 +21,8 @@ export const testInputs = function(name,phone){
         phoneError.textContent = 'Phone should contain only numbers.';
         document.getElementById('phone').insertAdjacentElement('afterend', phoneError);
         setTimeout(function () { phoneError.remove(); }, 1500);
-        return;
+        return false;
       }
+      return true
 
 }
