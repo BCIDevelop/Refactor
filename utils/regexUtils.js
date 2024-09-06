@@ -26,3 +26,8 @@ export const testInputs = function(name,phone){
       return true
 
 }
+
+export const filterContacts=function(filter,element){
+    const regexp = new RegExp(`${filter}.*`)
+    return regexp.test(element)
+}

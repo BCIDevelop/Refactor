@@ -4,12 +4,11 @@ const contactList = document.getElementById('contactList');
 const addContactBtn = document.getElementById('addContactBtn');
 const contactForm = document.getElementById('contacts');
 const filterInput = document.getElementById('filter');
-import { sanitizeInputs, testInputs } from "../utils/regexUtils.js";
+import { sanitizeInputs, testInputs ,filterContacts} from "../utils/regexUtils.js";
 import { addContactDOM } from "./domManipulation.js";
-
 let myListener 
-const addButtonHandler = function (e,contactId) {
 
+const addButtonHandler = function (e,contactId) {
   const updatedName = document.getElementById('name').value.trim();
   const updatedPhone = document.getElementById('phone').value.trim();
   if(!testInputs(updatedName,updatedPhone)) return
@@ -69,13 +68,16 @@ export const submitHandler = function(e){
   }
 
   export const filterInputHandler = function () {
-    const filterValue = '';
-    const filteredContacts =[] 
+    console.log(filterInput.value)
+    const filterValue = filterInput.value;
+    const filteredContacts =contacts.filter(element=> filterContacts(filterValue,element.name) || filterContacts(filterValue,element.phone)) 
     contactList.innerHTML = '';
     addContactDOM(filteredContacts)
+
   }
 
   export const clearFilterClickHandler = function () {
     filterInput.value = '';
     contactList.innerHTML = '';
+    addContactDOM(contacts)
   }
